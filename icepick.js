@@ -43,25 +43,7 @@ const forKeys = (obj, iter) => {
   }
 }
 
-const cloneObj = obj => {
-  const newObj = {}
-  const keys = Object.keys(obj)
-  let idx = keys.length
-  let key
-  while (idx--) {
-    key = keys[idx]
-    newObj[key] = obj[key]
-  }
-  return newObj
-}
-
-const clone = (coll) => {
-  if (Array.isArray(coll)) {
-    return coll.slice()
-  } else {
-    return cloneObj(coll)
-  }
-}
+const clone = require('rfdc')()
 
 const freezeIfNeeded = process.env.NODE_ENV === 'production'
 ? identity
